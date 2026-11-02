@@ -5,17 +5,26 @@ import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
-const clientOrigin = process.env.CLIENT_URL || 'http://localhost:5173';
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.CLIENT_URL,
+  'https://ai-mystery-room-five-alpha.vercel.app',
+  // Allow any vercel.app preview deployments
+].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, postman) or matching origin
-      if (!origin || origin === clientOrigin || origin.startsWith('http://localhost:')) {
-        callback(null, true);
-      } else {
-        callback(null, true); // Permissive in dev, can restrict to clientOrigin in prod
-      }
+      // Allow requests with no origin (curl, Postman, mobile apps)
+      if (!origin) return callback(null, true);
+      // Allow localhost in dev
+      if (origin.startsWith('http://localhost:')) return callback(null, true);
+      // Allow any vercel.app deployment (previews + production)
+      if (origin.endsWith('.vercel.app')) return callback(null, true);
+      // Allow explicitly listed origins
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      callback(new Error(`CORS: Origin ${origin} not allowed`));
     },
     credentials: true,
   })

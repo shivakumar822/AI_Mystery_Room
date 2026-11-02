@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #04070e;
+    color: #e2e8f0;
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(230, 179, 86, 0.04) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(225, 29, 72, 0.03) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(14, 21, 38, 0.8) 0px, transparent 80%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.025em;
+  }
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #060a13;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c2844;
+  border-radius: 9999px;
+  border: 1px solid rgba(230, 179, 86, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e6b356;
+}
+
+/* Professional Glassmorphism & Dossier Card Tokens */
+.glass-panel {
+  background: rgba(8, 13, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 179, 86, 0.12);
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.7);
+}
+
+.glass-panel-interactive {
+  background: rgba(8, 13, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 179, 86, 0.15);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-interactive:hover {
+  border-color: rgba(230, 179, 86, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(230, 179, 86, 0.2);
+}
+
+/* Shimmer Gold Gradient Border */
+.gold-gradient-border {
+  position: relative;
+  border-radius: 1rem;
+}
+.gold-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(230, 179, 86, 0.5), rgba(255, 255, 255, 0.05), rgba(230, 179, 86, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Realistic Red/Gold Stamp Effects */
+.stamp {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  border: 2px solid;
+  border-radius: 4px;
+  transform: rotate(-3deg);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0.7) 100%);
+}
+
+.stamp-classified {
+  color: #fb7185;
+  border-color: #e11d48;
+  background-color: rgba(225, 29, 72, 0.08);
+}
+
+.stamp-solved {
+  color: #34d399;
+  border-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.08);
+  transform: rotate(2deg);
+}
+
+/* Crime Tape Strip */
+.crime-tape {
+  background: repeating-linear-gradient(
+    -45deg,
+    #e6b356,
+    #e6b356 12px,
+    #04070e 12px,
+    #04070e 24px
+  );
+}
+
+/* Subtle ambient scanline effect for high-tech forensics */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.25)
+  );
+  background-size: 100% 4px;
+}
